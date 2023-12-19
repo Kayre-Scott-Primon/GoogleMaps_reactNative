@@ -1,0 +1,10 @@
+// dotenv.gradle
+
+def dotenvFile = file("${project.rootDir}/.env")
+
+if (dotenvFile.exists()) {
+    dotenvFile.eachLine { line ->
+        def (key, value) = line.split('=')
+        project.ext.set(key, value.trim())
+    }
+}
